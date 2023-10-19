@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+
+# Run this before you deploy it on replicate
+import os
+import sys
+
+# append project directory to path so predict.py can be imported
+sys.path.append('.')
+from predict import MODEL_CACHE
+
+# Make cache folders
+if not os.path.exists(MODEL_CACHE):
+    os.makedirs(MODEL_CACHE)
+
+# Download txt2vid model
+os.system("cd "+MODEL_CACHE+" && wget https://huggingface.co/VideoCrafter/Text2Video-1024-v1.0/resolve/main/model.ckpt")
+
